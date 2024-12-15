@@ -1,0 +1,15 @@
+frontend:
+  replicaCount: 1
+  image:
+    repository: your-acr.azurecr.io/frontend
+    tag: latest
+
+backend:
+  replicaCount: 1
+  image:
+    repository: your-acr.azurecr.io/backend
+    tag: latest
+
+ingress:
+  enabled: true
+  host: your-domain.com
