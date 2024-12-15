@@ -1,15 +1,19 @@
 frontend:
-  replicaCount: 1
+  replicaCount: 2
   image:
-    repository: your-acr.azurecr.io/frontend
+    repository: akslabacr1211.azurecr.io/frontend
     tag: latest
+  # imagePullSecrets: acr-secret
+  imagePullSecrets: []
 
 backend:
-  replicaCount: 1
+  replicaCount: 2
   image:
-    repository: your-acr.azurecr.io/backend
+    repository: akslabacr1211.azurecr.io/backend
     tag: latest
+  # imagePullSecrets: acr-secret
+  imagePullSecrets: []
 
 ingress:
   enabled: true
-  host: your-domain.com
+  # host: your-domain.com

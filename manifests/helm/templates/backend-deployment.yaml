@@ -12,9 +12,14 @@ spec:
       labels:
         app: backend
     spec:
+      # imagePullSecrets: {{ .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml .Values.backend.imagePullSecrets | nindent 8 }}  # 引用 imagePullSecrets
       containers:
       - name: backend
-        image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
+        # image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
+        image: {{ .Values.backend.image.repository }}:380
+        imagePullPolicy: Always  # 确保每次都尝试拉取最新镜像
         ports:
         - containerPort: 5000
 ---

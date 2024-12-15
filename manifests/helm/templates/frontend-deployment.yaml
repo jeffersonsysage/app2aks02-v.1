@@ -12,9 +12,14 @@ spec:
       labels:
         app: frontend
     spec:
+      # imagePullSecrets: {{ .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml .Values.frontend.imagePullSecrets | nindent 8 }}  # 引用 imagePullSecrets
       containers:
       - name: frontend
-        image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
+        # image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
+        image: {{ .Values.frontend.image.repository }}:380
+        imagePullPolicy: Always  # 确保每次都尝试拉取最新镜像
         ports:
         - containerPort: 80
 ---
